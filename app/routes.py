@@ -20,21 +20,22 @@ def create_recipe():
         return redirect(url_for("main.index"))
     return render_template("new_recipe.html", form=form)
 
-@bp.route("/recipe/<int:id>", methods=["GET"]) 
+
+@bp.route("/recipe/<int:id>", methods=["GET"])
 def get_recipe(id):
     requested_recipe = Recipe.query.get_or_404(id)
     return render_template("recipe_detail.html", recipe=requested_recipe)
 
-@bp.route("/recipe/<int:id>/delete", methods=["GET", "POST"]) 
+
+@bp.route("/recipe/<int:id>/delete", methods=["GET", "POST"])
 def delete_recipe(id):
     recipe_to_delete = Recipe.query.get_or_404(id)
     db.session.delete(recipe_to_delete)
     db.session.commit()
     return redirect(url_for("main.index"))
-    
+
+
 @bp.route("/recipes", methods=["GET"])
 def display_recipes():
     recipes_to_display = Recipe.query.all()
     return render_template("index.html", recipes=recipes_to_display)
-
-

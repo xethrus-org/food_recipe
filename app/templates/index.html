@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>All Recipes</title>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Apple macOS version 5.8.0">
+<title>All Recipes</title>
 </head>
 <body>
-  <h1>Recipes</h1>
-  <ul>
-    {% for recipe in recipes %}
-      <li>
-        // idk what to do here
-      </li>
-    {% else %}
-      <li>No recipes found.</li>
-    {% endfor %}
-  </ul>
+<h1>All Recipes</h1>
+{% for recipe in recipes %}
+<div>
+<h2>{{ recipe.id }}. {{ recipe.title }}</h2>
+<p><strong>Created:</strong> {{
+recipe.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+<p><strong>Description:</strong> {{ recipe.description }}</p>
+<p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+</div>
+<hr>
+{% else %}
+<p>No recipes yet.</p>
+{% endfor %}
 </body>
 </html>
-
