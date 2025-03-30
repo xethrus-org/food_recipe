@@ -13,6 +13,6 @@
 <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
 <p><strong>Created on:</strong> {{
 recipe.created.strftime('%Y-%m-%d %H:%M:%S') }}</p>
-<a href="{{%20url_for('main.index')%20}}">Back to recipes</a>
+<a href="{{ url_for('main.display_recipes') }}">Back to recipes</a>
 </body>
 </html>

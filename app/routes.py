@@ -12,12 +12,15 @@ def create_recipe():
     if form.validate_on_submit():
         recipe = Recipe(
             title=form.title.data,
-            description=form.ingredients.data,
+            description=form.description.data,
+            ingredients=form.ingredients.data,
             instructions=form.instructions.data,
         )
         db.session.add(recipe)
         db.session.commit()
-        return redirect(url_for("main.index"))
+        return redirect(url_for("main.display_recipes"))
+    else:
+        print("form error:", form.errors)
     return render_template("new_recipe.html", form=form)
 
 
@@ -32,7 +35,7 @@ def delete_recipe(id):
     recipe_to_delete = Recipe.query.get_or_404(id)
     db.session.delete(recipe_to_delete)
     db.session.commit()
-    return redirect(url_for("main.index"))
+    return redirect(url_for("main.display_recipes"))
 
 
 @bp.route("/recipes", methods=["GET"])
