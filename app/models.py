@@ -3,7 +3,7 @@ from . import db
 
 
 class Recipe(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoicrement=True)
     title = db.Column(db.String(80), nullable=False)
     description = db.Column(db.Text, nullable=False)
     ingredients = db.Column(db.Text, nullable=False)
