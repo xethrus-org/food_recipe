@@ -5,7 +5,7 @@ from . import db
 
 bp = Blueprint("main", __name__)
 
-
+#simple route for creating and pushing a new recipe to db
 @bp.route("/recipe/new", methods=["GET", "POST"])
 def create_recipe():
     form = RecipeForm()
@@ -23,7 +23,7 @@ def create_recipe():
         print("form error:", form.errors)
     return render_template("new_recipe.html", form=form)
 
-
+#simple route for finding the info on a specific recipe based on its auto-incrementing id
 @bp.route("/recipe/<int:id>", methods=["GET"])
 def get_recipe(id):
     requested_recipe = Recipe.query.get_or_404(id)

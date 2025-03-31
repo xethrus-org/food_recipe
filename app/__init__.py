@@ -12,7 +12,7 @@ def create_app():
 
     db.init_app(app)
     from . import routes
-
+    ##utilizes bp because they are more expandable than just bare routing it
     app.register_blueprint(routes.bp)
 
     return app
